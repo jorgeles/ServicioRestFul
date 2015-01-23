@@ -11,7 +11,7 @@ public class Comentario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
-	public String comentarios;
+	public String texto;
 	public int valoracion;
 
 }
