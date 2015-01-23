@@ -95,4 +95,8 @@ public class BaseDeDatos {
 		return false;
 
 	}
+	
+	public boolean insertarComentarios(Long idLocal, Comentario comentario){
+		return false;
+	}
 }
