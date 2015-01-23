@@ -20,6 +20,6 @@ public class Local implements Serializable {
 	public String descripcion;
 	public double longitud;
 	public double latitud;
-	@OneToMany
+	@OneToMany(targetEntity=Comentario.class)
 	public List<Comentario> comentarios = new ArrayList<Comentario>() ;
 }

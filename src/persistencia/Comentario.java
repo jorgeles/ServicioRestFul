@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Comentario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
