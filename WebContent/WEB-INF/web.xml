@@ -7,7 +7,7 @@
      <!-- Registra recursos y proveedores en el paquete com.mio.jersey.first . -->
     <init-param>
         <param-name>com.sun.jersey.config.property.packages</param-name>
-        <param-value>paquete</param-value>
+        <param-value>servidor</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
