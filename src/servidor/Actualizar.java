@@ -8,17 +8,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /*
- *@author Jorge Gonzalez Peregrin
- *Llama a la bse de datos y elimina el local que se pasa como parametro
+ * @author Jorge Leon Fernandez.
+ * Devuelbe true si la actualización ha sido correcta
  */
-@Path("/eliminar")
-public class Eliminar {
+@Path("/actualizar")
+public class Actualizar {
 	// Este metodo se llamara si existe una peticion XML desde el cliente
 	@POST
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public String getXML(Local local) {
 		BaseDeDatos bd = new BaseDeDatos();
-		String salida = bd.eliminar(local);
-		return salida;
+		Boolean realizado = bd.actualizar(local);
+		return realizado.toString();
 	}
 }

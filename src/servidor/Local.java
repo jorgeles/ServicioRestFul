@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/*
+ * @author Jorge Leon Fernandez
+ * Clase que contiene los datos del Local
+ */
 @Entity
 @XmlRootElement
 public class Local implements Serializable {

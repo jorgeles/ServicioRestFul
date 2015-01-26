@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
@@ -13,7 +14,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -27,12 +27,16 @@ public class Test {
 		ClientConfig config = new DefaultClientConfig();
 		Client cliente = Client.create(config);
 		Local input = new Local();
-		input.id=24;
-		input.comentarios.add(new Comentario());
+		Comentario com = new Comentario();
+		com.texto="JaaajjjjjjiiiiiiijjjjjaaaaaaaJU";
+		com.id=301;
+		input.comentarios.add(com);
+		input.id=501;
+		input.descripcion="Guapaaaaa";
 		WebResource servicio = cliente.resource(getBaseURI());
 		// Conseguir XML para la aplicacion
-		String xmlFile = servicio.path("rest").path("insertar")
-				.accept(MediaType.APPLICATION_XML).post(String.class, input);
+		String xmlFile = servicio.path("rest").path("insertarcomentario")
+				.accept(MediaType.APPLICATION_XML).post(String.class,input);
 		
 		System.out.println(xmlFile);
 		
