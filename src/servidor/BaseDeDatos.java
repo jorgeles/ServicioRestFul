@@ -91,7 +91,6 @@ public class BaseDeDatos {
 		Query q = em
 				.createQuery("UPDATE Local l SET l.nombre = :nombre, l.descripcion = :descripcion, l.longitud= :longitud, l.latitud= :latitud WHERE l.id = :id");
 		q.setParameter("nombre", local.nombre);
-		System.out.println(local.descripcion);
 		q.setParameter("descripcion", local.descripcion);
 		q.setParameter("longitud", local.longitud);
 		q.setParameter("latitud", local.latitud);
