@@ -97,21 +97,7 @@ public class BaseDeDatos {
 		q.setParameter("id", local.id);
 		q.executeUpdate();
 		updateTransaction.commit();
-
-		//Como no se pueden actulizar de golpe todos los comentarios, se actualizan de uno en uno
-		for (int i = 0; i < local.comentarios.size(); i++) {
-			factoria = Persistence
-					.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-			em = factoria.createEntityManager();
-			updateTransaction = em.getTransaction();
-			updateTransaction.begin();
-			q = em.createQuery("UPDATE Comentario C SET C.texto = :texto, C.valoracion = :valoracion WHERE C.id = :id");
-			q.setParameter("texto", local.comentarios.get(i).texto);
-			q.setParameter("valoracion", local.comentarios.get(i).valoracion);
-			q.setParameter("id", local.comentarios.get(i).id);
-			q.executeUpdate();
-			updateTransaction.commit();
-		}
+		
 		return true;
 
 	}
