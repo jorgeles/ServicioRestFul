@@ -59,8 +59,21 @@ public class BaseDeDatos {
 		factoria = Persistence
 				.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
-		// leer las entradas existentes y escribir en la consola
 		Query q = em.createQuery("SELECT l from Local l");
+		List<Local> listalocales = q.getResultList();
+		return listalocales;
+	}
+	
+	/*
+	 * @author: Jorge Leon	Fernandez
+	 * Se obtiene todos los locales de la base de datos
+	 */
+	public List<Local> obtenerLocal(String id) {
+		factoria = Persistence
+				.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = factoria.createEntityManager();
+		Query q = em.createQuery("SELECT l from Local l WHERE l.id= :id");
+		q.setParameter("id", Integer.parseInt(id));
 		List<Local> listalocales = q.getResultList();
 		return listalocales;
 	}
@@ -107,16 +120,16 @@ public class BaseDeDatos {
 	 * @author: Jorge Gonzalez Peregrin
 	 * Se elimina el local que se pasa como parametro en la base de datos
 	 */
-	public String eliminar(Local local) {
+	public String eliminar(long id) {
 		factoria = Persistence
 				.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("SELECT l FROM Local l WHERE l.id = :id ");
-		q.setParameter("id", local.id);
+		q.setParameter("id", id);
 		List<Local> listaLocales = q.getResultList();
 		for (Local lista : listaLocales) {
-			if (lista.id == local.id) {
+			if (lista.id == id) {
 				em.remove(lista);
 			}
 		}

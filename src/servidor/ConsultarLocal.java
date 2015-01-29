@@ -8,17 +8,18 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /*
- *@author Jorge Gonzalez Peregrin
- *Llama a la bse de datos y elimina el local que se pasa como parametro
+ * @author Jorge Leon Fernandez
+ * Llama a la base de datos y obtiene los datos del local con Local.id = id
+ * Devuelve una lista con el local
  */
-@Path("/eliminar")
-public class Eliminar {
+@Path("/consultar_local")
+public class ConsultarLocal {
 	// Este metodo se llamara si existe una peticion XML desde el cliente
 	@POST
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public String getXML(String id) {
+	public List<Local> getXML(String id) {
 		BaseDeDatos bd = new BaseDeDatos();
-		String salida = bd.eliminar(Integer.parseInt(id));
-		return salida;
+		List<Local> locales = bd.obtenerLocal(id);
+		return locales;
 	}
 }
