@@ -91,6 +91,7 @@ public class BaseDeDatos {
 		Query q = em
 				.createQuery("UPDATE Local l SET l.nombre = :nombre, l.descripcion = :descripcion, l.longitud= :longitud, l.latitud= :latitud WHERE l.id = :id");
 		q.setParameter("nombre", local.nombre);
+		System.out.println(local.descripcion);
 		q.setParameter("descripcion", local.descripcion);
 		q.setParameter("longitud", local.longitud);
 		q.setParameter("latitud", local.latitud);
@@ -130,7 +131,7 @@ public class BaseDeDatos {
 	 * @author: Jorge Gonzalez Peregrin
 	 * Se inserta el  comentario que se pasa como parametro en el local que se pasa como parametro
 	 */
-	public Local insertarComentarios(Local local, Comentario comentario) {
+	public Boolean insertarComentarios(Local local, Comentario comentario) {
 		factoria = Persistence
 				.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
@@ -139,6 +140,6 @@ public class BaseDeDatos {
 		miLocal.comentarios.add(comentario);
 		em.getTransaction().commit();
 		em.close();
-		return miLocal;
+		return true;
 	}
 }
